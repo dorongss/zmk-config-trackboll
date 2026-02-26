@@ -1,6 +1,0 @@
-/* * Copyright (c) 2020 Pete Johanson
- * SPDX-License-Identifier: MIT
- */
-
-// 트랙볼(마우스) 관련 에러를 유발하는 부분만 제거하고 
-// 키보드 본연의 설정은 ZMK 시스템 기본값을 따르도록 완전히 비워둡니다.
