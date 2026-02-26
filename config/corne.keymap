@@ -1,74 +1,88 @@
-#include <input/processors.dtsi>
-#include <dt-bindings/led/led.h>
-#include <dt-bindings/behavior_pim447.h>
-#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/rgb.h>
-
-#define default_layer 0
-#define lower_layer 1
-#define raise_layer 2
-#define layer_3 3
+#include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/behavior_pim447.h> // 원본 특수 트랙볼 드라이버
 
 / {
+    combos {
+        compatible = "zmk,combos";
+        combo_dqt { bindings = <&kp DQT>; key-positions = <17 18>; timeout-ms = <85>; };
+        combo_caps_word { bindings = <&caps_word>; key-positions = <1 2>; timeout-ms = <85>; };
+        combo_enter { bindings = <&kp ENTER>; key-positions = <19 20>; timeout-ms = <85>; };
+        combo_del_word { bindings = <&kp LC(BSPC)>; key-positions = <9 10>; timeout-ms = <85>; };
+        combo_emoji { bindings = <&kp LG(DOT)>; key-positions = <3 4>; timeout-ms = <85>; };
+        combo_clipboard { bindings = <&kp LG(V)>; key-positions = <2 3>; timeout-ms = <85>; };
+        copy { bindings = <&kp LC(C)>; key-positions = <26 27>; timeout-ms = <85>; };
+        paste { bindings = <&kp LC(V)>; key-positions = <27 28>; timeout-ms = <85>; };
+    };
+
     behaviors {
+        // 원본 트랙볼 엔진 활성화
         tb_pim447: zmk_behavior_pim447 {
             compatible = "zmk,behavior-pim447";
             #binding-cells = <1>;
+        };
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 39 40 41>;
+        };
+        hmr: hmr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
+        };
+        emj: emj {
+            compatible = "zmk,behavior-hold-tap";
+            label = "EMOJI_HT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <150>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        layer_0 {
             bindings = <
-&kp CAPSLOCK    &kp Q  &kp W  &kp E     &kp R   &kp T        &kp Y    &kp U   &kp I      &kp O    &kp P     &kp BACKSPACE
-&kp LEFT_SHIFT  &kp A  &kp S  &kp D     &kp F   &kp G        &kp H    &kp J   &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL       &kp Z  &kp X  &kp C     &kp V   &kp B        &kp N    &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                              &kp LGUI  &tog 1  &kp SPACE    &kp RET  &tog 2  &kp RALT
+&kp TAB    &kp Q           &kp W           &kp E        &kp R           &kp T          &kp Y        &kp U        &kp I        &kp O           &kp P           &kp BSPC
+&kp CAPS   &hml LCTRL A    &hml LGUI S     &hml LALT D  &hml RSHFT F    &kp G          &kp H        &hmr RSHFT J &hmr RALT K  &hmr RGUI L     &emj LG(DOT) SEMI &kp K_VOL_UP
+&kp LSHFT  &kp Z           &kp X           &kp C        &kp V           &kp B          &kp N        &kp M        &kp COMMA    &kp DOT         &kp FSLH        &kp K_VOL_DN
+                                           &kp LG(V)    &kp SPACE       &lt 2 SPACE    &lt 1 BSPC   &kp RALT     &kp DEL
             >;
         };
 
-        lower_layer {
+        layer_1 {
             bindings = <
-&kp F1     &kp F2          &kp F3   &kp F4        &kp F5            &kp F6               &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9   &kp SLASH  &kp ASTERISK  &kp MINUS
-&kp F7     &kp F8          &kp F9   &kp F10       &kp F11           &kp F10              &kp NUMBER_4  &kp N5        &kp NUMBER_6   &kp BSLH   &kp EQUAL     &kp PLUS
-&kp LCTRL  &kp LEFT_SHIFT  &kp TAB  &kp GRAVE     &kp LEFT_BRACKET  &kp RIGHT_BRACKET    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3   &kp DOT    &kp DELETE    &kp ENTER
-                                    &kp LEFT_ALT  &trans            &kp BSLH             &kp NUMBER_0  &trans        &kp BACKSPACE
+&mkp MB1   &mkp MB2     &tb_pim447 PIM447_TOGGLE_MODE &kp F4       &kp F5       &kp F6         &kp F7      &kp F8      &kp UP     &kp LBKT     &kp RBKT     &kp BSPC
+&kp F12    &kp F7       &kp F8                        &kp F9       &kp F10      &kp F11        &kp HOME    &kp LEFT    &kp DOWN   &kp RIGHT    &kp END      &kp ENTER
+&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1                  &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &none       &none       &none      &none        &none        &none
+                                                      &trans       &trans       &trans         &trans      &trans      &trans
             >;
         };
 
-        raise_layer {
+        layer_2 {
             bindings = <
-&tb_pim447 PIM447_TOGGLE_MODE  &trans          &kp UP_ARROW       &kp PRINTSCREEN  &kp SCROLLLOCK  &kp K_PP          &bt BT_SEL 0       &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
-&trans                         &kp LEFT_ARROW  &kp DOWN_ARROW     &kp RIGHT_ARROW  &kp K_PREV      &kp K_NEXT        &kp PRINTSCREEN    &kp SCROLLLOCK  &kp PAUSE_BREAK  &trans        &trans        &kp PAGE_UP
-&trans                         &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp END         &kp K_PREVIOUS    &kp INS            &kp HOME        &kp DELETE       &kp END       &trans        &kp PAGE_DOWN
-                                               &trans           &trans          &trans            &ext_power EP_OFF  &trans          &out OUT_TOG
+&kp ESC     &kp EXCL  &kp AT    &kp HASH     &kp DLLR     &kp PRCNT      &kp CARET   &kp N7      &kp N8       &kp N9       &kp ASTRK   &kp BSPC
+&kp LCTRL   &kp AMPS  &kp ASTRK &kp LPAR     &kp RPAR     &kp PLUS       &kp MINUS   &kp N4      &kp N5       &kp N6       &kp PLUS    &kp ENTER
+&kp LSHFT   &kp UNDER &kp PLUS  &kp LBRC     &kp RBRC     &kp PIPE       &kp EQUAL   &kp N1      &kp N2       &kp N3       &kp DOT     &kp RSHFT
+                                &trans       &trans       &trans         &trans      &trans      &kp N0
             >;
-        };
-
-        layer_3 {
-            bindings = <
-&trans  &rgb_ug RGB_TOG                 &rgb_ug RGB_HUI                   &rgb_ug RGB_HUD                  &rgb_ug RGB_SAI                   &rgb_ug RGB_SAD                     &mkp LCLK  &tb_pim447 PIM447_TOGGLE_MODE  &mkp RCLK  &mkp MB1  &mkp MB2  &out OUT_TOG
-&trans  &rgb_ug RGB_BRI                 &rgb_ug RGB_BRD                   &rgb_ug RGB_SPI                  &rgb_ug RGB_SPD                   &rgb_ug RGB_EFF                     &mkp MB1   &mkp MB2                       &mkp MB3   &mkp MB4  &mkp MB5  &out OUT_BLE
-&trans  &rgb_ug RGB_COLOR_HSB(0,93,49)  &rgb_ug RGB_COLOR_HSB(245,91,50)  &rgb_ug RGB_COLOR_HSB(60,97,53)  &rgb_ug RGB_COLOR_HSB(119,92,52)  &rgb_ug RGB_COLOR_HSB(301,88,49)    &mkp MCLK  &trans                         &trans     &trans    &trans    &ext_power EP_TOG
-                                                                          &mkp LCLK                        &trans                            &mkp RCLK                           &mkp LCLK  &trans                         &mkp RCLK
-            >;
-        };
-    };
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        trackball {
-            if-layers = <1 2>;
-            then-layer = <3>;
         };
     };
 };
