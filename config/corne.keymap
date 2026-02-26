@@ -3,6 +3,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/mouse.h>
+#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/behavior_pim447.h> // 원본 특수 트랙볼 드라이버
 
 / {
@@ -12,14 +13,13 @@
         combo_caps_word { bindings = <&caps_word>; key-positions = <1 2>; timeout-ms = <85>; };
         combo_enter { bindings = <&kp ENTER>; key-positions = <19 20>; timeout-ms = <85>; };
         combo_del_word { bindings = <&kp LC(BSPC)>; key-positions = <9 10>; timeout-ms = <85>; };
-        combo_emoji { bindings = <&kp LG(DOT)>; key-positions = <3 4>; timeout-ms = <85>; };
-        combo_clipboard { bindings = <&kp LG(V)>; key-positions = <2 3>; timeout-ms = <85>; };
+        combo_emoji { bindings = <&kp LGUI(PERIOD)>; key-positions = <3 4>; timeout-ms = <85>; };
+        combo_clipboard { bindings = <&kp LGUI(V)>; key-positions = <2 3>; timeout-ms = <85>; };
         copy { bindings = <&kp LC(C)>; key-positions = <26 27>; timeout-ms = <85>; };
         paste { bindings = <&kp LC(V)>; key-positions = <27 28>; timeout-ms = <85>; };
     };
 
     behaviors {
-        // 원본 트랙볼 엔진 활성화
         tb_pim447: zmk_behavior_pim447 {
             compatible = "zmk,behavior-pim447";
             #binding-cells = <1>;
@@ -61,9 +61,9 @@
         layer_0 {
             bindings = <
 &kp TAB    &kp Q           &kp W           &kp E        &kp R           &kp T          &kp Y        &kp U        &kp I        &kp O           &kp P           &kp BSPC
-&kp CAPS   &hml LCTRL A    &hml LGUI S     &hml LALT D  &hml RSHFT F    &kp G          &kp H        &hmr RSHFT J &hmr RALT K  &hmr RGUI L     &emj LG(DOT) SEMI &kp K_VOL_UP
+&kp CAPS   &hml LCTRL A    &hml LGUI S     &hml LALT D  &hml RSHFT F    &kp G          &kp H        &hmr RSHFT J &hmr RALT K  &hmr RGUI L     &emj (LGUI(PERIOD)) SEMI &kp K_VOL_UP
 &kp LSHFT  &kp Z           &kp X           &kp C        &kp V           &kp B          &kp N        &kp M        &kp COMMA    &kp DOT         &kp FSLH        &kp K_VOL_DN
-                                           &kp LG(V)    &kp SPACE       &lt 2 SPACE    &lt 1 BSPC   &kp RALT     &kp DEL
+                                           &kp LGUI(V)  &kp SPACE       &lt 2 SPACE    &lt 1 BSPC   &kp RALT     &kp DEL
             >;
         };
 
