@@ -2,7 +2,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "corne.dtsi"
+// 무한 루프를 유발하는 아래 코드를 주석 처리(삭제)했습니다!
+// #include "corne.dtsi"  <-- 절대 넣지 마세요!
 
 &kscan0 {
     col-gpios
