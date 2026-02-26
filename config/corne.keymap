@@ -7,14 +7,23 @@
 #include <dt-bindings/behavior_pim447.h> // 원본 특수 트랙볼 드라이버
 
 / {
+    // 💡 깐깐한 문법을 피하기 위한 '매크로 포장지'
+    macros {
+        emj_mac: emj_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LG(DOT)>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
         combo_dqt { bindings = <&kp DQT>; key-positions = <17 18>; timeout-ms = <85>; };
         combo_caps_word { bindings = <&caps_word>; key-positions = <1 2>; timeout-ms = <85>; };
         combo_enter { bindings = <&kp ENTER>; key-positions = <19 20>; timeout-ms = <85>; };
         combo_del_word { bindings = <&kp LC(BSPC)>; key-positions = <9 10>; timeout-ms = <85>; };
-        combo_emoji { bindings = <&kp LGUI(PERIOD)>; key-positions = <3 4>; timeout-ms = <85>; };
-        combo_clipboard { bindings = <&kp LGUI(V)>; key-positions = <2 3>; timeout-ms = <85>; };
+        combo_emoji { bindings = <&kp LG(DOT)>; key-positions = <3 4>; timeout-ms = <85>; };
+        combo_clipboard { bindings = <&kp LG(V)>; key-positions = <2 3>; timeout-ms = <85>; };
         copy { bindings = <&kp LC(C)>; key-positions = <26 27>; timeout-ms = <85>; };
         paste { bindings = <&kp LC(V)>; key-positions = <27 28>; timeout-ms = <85>; };
     };
@@ -44,6 +53,8 @@
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
         };
+        
+        // 💡 매크로를 불러오는 새끼손가락 홀드탭
         emj: emj {
             compatible = "zmk,behavior-hold-tap";
             label = "EMOJI_HT";
@@ -51,7 +62,7 @@
             tapping-term-ms = <200>;
             quick-tap-ms = <150>;
             flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+            bindings = <&emj_mac>, <&kp>; // 꾹 누르면 이모지 매크로, 톡 치면 일반키
         };
     };
 
@@ -61,9 +72,9 @@
         layer_0 {
             bindings = <
 &kp TAB    &kp Q           &kp W           &kp E        &kp R           &kp T          &kp Y        &kp U        &kp I        &kp O           &kp P           &kp BSPC
-&kp CAPS   &hml LCTRL A    &hml LGUI S     &hml LALT D  &hml RSHFT F    &kp G          &kp H        &hmr RSHFT J &hmr RALT K  &hmr RGUI L     &emj (LGUI(PERIOD)) SEMI &kp K_VOL_UP
+&kp CAPS   &hml LCTRL A    &hml LGUI S     &hml LALT D  &hml RSHFT F    &kp G          &kp H        &hmr RSHFT J &hmr RALT K  &hmr RGUI L     &emj 0 SEMI     &kp K_VOL_UP
 &kp LSHFT  &kp Z           &kp X           &kp C        &kp V           &kp B          &kp N        &kp M        &kp COMMA    &kp DOT         &kp FSLH        &kp K_VOL_DN
-                                           &kp LGUI(V)  &kp SPACE       &lt 2 SPACE    &lt 1 BSPC   &kp RALT     &kp DEL
+                                           &kp LG(V)    &kp SPACE       &lt 2 SPACE    &lt 1 BSPC   &kp RALT     &kp DEL
             >;
         };
 
