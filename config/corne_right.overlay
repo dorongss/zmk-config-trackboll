@@ -1,4 +1,6 @@
 #include "corne.dtsi"
+#include <dt-bindings/behavior_pim447.h>
+#include <dt-bindings/zmk/mouse.h>
 
 &default_transform {
     col-offset = <6>;
