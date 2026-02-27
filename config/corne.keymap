@@ -13,6 +13,36 @@
             key-positions = <19 20>; // J(19)와 K(20) 위치
             bindings = <&kp RET>;
         };
+
+        kl {
+            bindings = <&kp EXCLAMATION>;
+            key-positions = <21 22>;
+        };
+
+        xc {
+            bindings = <&kp C_AC_COPY>;
+            key-positions = <26 27>;
+        };
+
+        cv {
+            bindings = <&kp C_AC_PASTE>;
+            key-positions = <27 28>;
+        };
+
+        io {
+            bindings = <&kp RG(PERIOD)>;
+            key-positions = <8 9>;
+        };
+
+        clip {
+            bindings = <&kp LG(V)>;
+            key-positions = <2 3>;
+        };
+
+        cap {
+            bindings = <&kp LS(LG(S))>;
+            key-positions = <15 16>;
+        };
     };
 
     behaviors {
