@@ -20,12 +20,12 @@
         };
 
         xc {
-            bindings = <&kp K_COPY>;
+            bindings = <&kp LC(C)>;
             key-positions = <26 27>;
         };
 
         cv {
-            bindings = <&kp K_PASTE>;
+            bindings = <&kp LA(V)>;
             key-positions = <27 28>;
         };
 
