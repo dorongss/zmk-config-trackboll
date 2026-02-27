@@ -126,6 +126,20 @@
             bindings = <&kp S &kp K &kp F &kp M &kp F &kp T &kp K &kp F &kp K &kp D &kp G &kp K &kp F &kp K &kp M &kp STAR>;
             label = "NEW_MACRO7";
         };
+
+        new_macroqq: new_macroqq {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE &kp SPACE &kp SPACE &kp SPACE &kp N3 &kp N1 &kp N4 &kp SPACE &kp N1 &kp N1 &kp N3 &kp SPACE &kp N1 &kp N1 &kp N0 &kp N5 &kp SPACE>;
+            label = "NEW_MACROQQ";
+        };
+
+        new_macrogdgdg: new_macrogdgdg {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N0 &kp N1 &kp N0 &kp MINUS &kp N4 &kp N4 &kp N5 &kp N5 &kp MINUS &kp N9 &kp N6 &kp N2 &kp N4>;
+            label = "NEW_MACROGDGDG";
+        };
     };
 
     keymap {
@@ -160,10 +174,10 @@
 
         layer_3 {
             bindings = <
-&trans  &caps_word  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-                            &trans  &trans  &trans    &trans  &trans  &trans
+&trans  &new_macro   &new_macro1  &new_macro3  &new_macro4  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &new_macro5  &new_macro6  &new_macro7  &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans       &trans       &trans       &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                                  &trans       &trans       &trans    &trans  &trans  &trans
             >;
         };
     };
