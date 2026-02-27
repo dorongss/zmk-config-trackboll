@@ -63,6 +63,57 @@
         };
     };
 
+    macros {
+        new_macro: new_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp G &kp L &kp A &kp B &kp W &kp O &kp R &kp L &kp D &kp AT &kp N &kp A &kp V &kp E &kp R &kp DOT &kp C &kp O &kp M>;
+            label = "NEW_MACRO";
+        };
+
+        new_macro1: new_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp G &kp L &kp A &kp B &kp W &kp O &kp R &kp L &kp D &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "NEW_MACRO";
+        };
+
+        new_macro3: new_macro3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp U &kp D &kp W &kp L &kp S &kp N2 &kp N6 &kp N9 &kp N7 &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "NEW_MACRO3";
+        };
+
+        new_macro4: new_macro4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp U &kp D &kp W &kp L &kp S &kp N9 &kp N6 &kp N2 &kp N4 &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "NEW_MACRO4";
+        };
+
+        new_macro5: new_macro5 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp I &kp A &kp M &kp J &kp O &kp K &kp E &kp R &kp N2 &kp N4 &kp AT>;
+            label = "NEW_MACRO5";
+        };
+
+        new_macro6: new_macro6 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp I &kp A &kp M &kp J &kp O &kp K &kp E &kp R &kp N2 &kp N4 &kp DLLR>;
+            label = "NEW_MACRO6";
+        };
+
+        new_macro7: new_macro7 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp S &kp K &kp F &kp M &kp F &kp T &kp K &kp F &kp K &kp D &kp G &kp K &kp F &kp K &kp M &kp STAR>;
+            label = "NEW_MACRO7";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
