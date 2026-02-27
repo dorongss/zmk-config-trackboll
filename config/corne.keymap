@@ -87,9 +87,18 @@
         raise_layer {
             bindings = <
 &kp F1      &kp F2      &kp F3    &kp F4   &kp F5       &kp F6           &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UP                &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans
-&kp F7      &kp F8      &kp F9    &kp F10  &kp F11      &kp F12          &kp SQT               &kp LEFT_ARROW         &kp DOWN              &kp RIGHT_ARROW   &kp DOUBLE_QUOTES  &kp GRAVE
+&kp F7      &kp F8      &kp F9    &kp F10  &kp F11      &kp F12          &kp SQT               &kp LEFT_ARROW         &kp DOWN              &kp RIGHT_ARROW   &kp DOUBLE_QUOTES  &kp ENTER
 &kp INSERT  &kp K_MENU  &kp HOME  &kp END  &kp PAGE_UP  &kp PAGE_DOWN    &kp MINUS             &kp EQUAL              &kp NON_US_BACKSLASH  &kp PIPE          &kp GRAVE          &kp TILDE
-                                  &trans   &trans       &trans           &kp RET               &trans                 &kp RALT
+                                  &trans   &trans       &trans           &trans                &trans                 &trans
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+&trans  &caps_word  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans      &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans      &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                            &trans  &trans  &trans    &trans  &trans  &trans
             >;
         };
     };
