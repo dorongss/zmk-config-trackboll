@@ -25,7 +25,7 @@
         };
 
         cv {
-            bindings = <&kp LA(V)>;
+            bindings = <&kp LC(V)>;
             key-positions = <27 28>;
         };
 
@@ -69,11 +69,11 @@
             bindings = <&kp RIGHT_ALT>, <&kp LANGUAGE_2>;
         };
 
-        ntom: ntom {
+        ntob: ntob {
             compatible = "zmk,behavior-tap-dance";
-            label = "NTOM";
+            label = "NTOB";
             #binding-cells = <0>;
-            bindings = <&kp N>, <&kp M>;
+            bindings = <&kp N>, <&kp B>;
         };
     };
 
@@ -149,7 +149,7 @@
             bindings = <
 &kp TAB    &kp Q        &kp W       &kp E       &kp R        &kp T          &kp Y   &kp U          &kp I       &kp O       &kp P           &kp BSPC
 &kp CLCK   &hm LCTRL A  &hm LGUI S  &hm LALT D  &hm LSHFT F  &kp G          &kp H   &hm RSHFT J    &hm RALT K  &hm RGUI L  &hm RCTRL SEMI  &kp C_VOLUME_UP
-&kp LSHFT  &kp Z        &kp X       &kp C       &kp V        &kp B          &ntom   &kp M          &kp COMMA   &kp DOT     &kp FSLH        &kp C_VOLUME_DOWN
+&kp LSHFT  &kp Z        &kp X       &kp C       &kp V        &kp B          &ntob   &kp M          &kp COMMA   &kp DOT     &kp FSLH        &kp C_VOLUME_DOWN
                                     &kp ESC     &lt 2 SPACE  &lt 1 SPACE    &enkor  &kp BACKSPACE  &kp DELETE
             >;
         };
